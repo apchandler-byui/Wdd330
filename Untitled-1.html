@@ -16,7 +16,7 @@
             function displayStory(){  
                 var storyHTML = document.getElementById("story_editor").value
                 
-                document.getElementById("story_editor").innerHTML = storyHTML
+                document.getElementById("story_display").innerHTML = storyHTML
             }
         </script>
         <style>
@@ -40,6 +40,7 @@
             <button onclick="displayStory()">Display It</button>
         </section>
         <textarea id="story_editor" placeholder="Write a totally awesome story here."></textarea>
+        <div id="story_display"></div>
     </body>
     
 </html>
