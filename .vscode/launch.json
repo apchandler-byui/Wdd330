@@ -4,12 +4,13 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
         
         {
             "type": "pwa-chrome",
             "request": "launch",
-            "name": "Open Untitled-1.html",
-            "file": "f:\\ByuI\\WDD330\\Untitled-1.html"
+            "name": "Open Week7",
+            "file": "C:\\Users\\andrewc\\OneDrive - ZeroNox\\ByuI\\repos\\Wdd330\\Week7\\index.html"
         }
     ]
 }
