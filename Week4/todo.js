@@ -1,30 +1,9 @@
 /*
- Start by brainstorming with class what methods the app will need to work.
-Add Todo
-Complete Todo
-Edit ToDo?
-Delete ToDo?
-List Todos
-Show/hide completed
-Filter ToDos (complete/not complete)
-Read toDos from local storage
-Write ToDos to local storage
-
-Then organize it into things that the interface needs (public) and things that it doesn't need direct access to (private)
-Public:
-Add Todo
-Edit Todo
-filter Todos
-Delete todo
-list todos
-
-
 private:
 read/write localStorage
-
 */
 import { qs, writeToLS, readFromLS, bindTouch } from "./utils.js";
-//  private code here. Not exported from the module
+
 // we need a place to store our list of todos in memory
 let liveToDos = null;
 
@@ -38,6 +17,8 @@ function renderList(list, element, toDos, hidden) {
     const formattedDate = new Date(toDo.id).toLocaleDateString("en-US");
 
     let cb = null;
+    let btn = null;
+
     if(hidden && toDo.completed){
         item.innerHTML = `<label><input type="checkbox" checked><strike> ${toDo.content}</strike></label><button>X</button>`;
     }
@@ -52,6 +33,14 @@ function renderList(list, element, toDos, hidden) {
       cb.addEventListener("change",function() {
         toDos.completeToDo(toDo.id);
       });  
+    }
+
+    //wire listener to the button
+    btn = item.childNodes[1];
+    if(btn) {
+      btn.addEventListener("click", function() {
+        toDos.removeToDo(toDo.id);
+      });
     }
 
     element.appendChild(item);
@@ -78,6 +67,14 @@ function addToDo(value, key) {
   liveToDos.push(newToDo);
   writeToLS(key, liveToDos);
 }
+
+function deleteToDo(key) {
+  let newList = liveToDos.filter(item => item.id != key);
+  liveToDos = newList;
+  writeToLS(key, liveToDos);
+}
+
+
 // this would be done last if you still have time...and if you haven't blown too many minds yet :)  If you do get here...mention how similar this method is with getToDos...they could probably be combined easily.
 function filterToDos(key, completed = true) {
   let toDos = getToDos(key);
@@ -122,6 +119,17 @@ export default class ToDos {
       renderList(liveToDos, this.listElement,this, true);
     }  
   }
+
+  removeToDo(id) {
+    console.log(id + "removed");
+    let toDo = this.findTodo(id);
+  
+    if(toDo){
+      deleteToDo(id);
+      renderList(liveToDos, this.listElement,this, true);
+    }  
+  }
+
 
   listToDos(hidden = true) {
     renderList(getToDos(this.key), this.listElement, this, hidden);

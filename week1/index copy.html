@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WDD 330 portfolio</title>
+    <script type="text/javascript" src="../js/main.js"></script>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <h1>Week 1 notes</h1>
+    <ul><li><a href="form.html">Form Example</a></li>
+    </ul>
+     <!-- 2 -->
+<p>CORE 2</p>
+<input id='userInput2' type="text">
+<button onclick="sumToNum()">Submit</button>
+<div id="display2"></div>
+    <script>
+//2
+function sumToNum() {
+  //let input2 = document.getElementById('userInput2').value;
+let userInput = parseInt(document.getElementById('userInput2').value);
+console.log(userInput);
+
+console.log('userinput: '+ typeof userInput)
+console.log('NaN: '+ typeof NaN)
+
+if (!isNaN(userInput)) { //to make sure it is a number
+const sumOfNums = sumConsecutiveNums(userInput); //to hold 2nd function
+document.getElementById('display2').innerHTML = sumOfNums; //the 2nd function variable
+} else {
+document.getElementById('display2').innerHTML = "invalid number";
+}
+}
+
+function sumConsecutiveNums(endNum) {
+let value = 0;
+for (let i = 1; i <= endNum; i++) {
+value += i;
+}
+return value;
+}
+    </script>
+  </body>
+</html>
