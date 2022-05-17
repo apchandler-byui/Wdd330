@@ -1,21 +1,22 @@
 
 // function longProcess() {
 //     setTimeout(() => {
+//         console.log("in anonymous");
 //        return 42
 //      }, 200);
-//     const total = 100 + longProcess();
+//     const total = 100; //+ longProcess();
 //     console.log('total', total); // NaN
 //  }
 
-//  longProcess();
+//   longProcess();
  
 // function longProcess() {
 //     return new Promise((resolve, reject) => {
 //         setTimeout(() => {
-//         if (1) {
+//         if (0) {
 //             resolve(42);
 //         } else reject('failed');
-//             }, 200);
+//             }, 200); 
 //     });
 // }
 
@@ -28,7 +29,7 @@
 //     console.log(err);
 // });
 
-
+  
 // function getJson(url) {
 //     return fetch(url)
 //         .then(response => {
@@ -44,21 +45,33 @@
 //         console.log(err);
 //         });
 // }
-    
 
 const baseUrl = 'https://pokeapi.co/api/v2/';
 
+// const myList = getJson(baseUrl + 'type/3');
 // myList.then(data => {
-//   console.log(data);
-//   buildList(data);
-// });
+//         console.log(data);
+//         //buildList(data);
+//     });
+
+
+// // myList.then(data => {
+// //   console.log(data);
+// //   buildList(data);
+// // });
+
+function writestuff() { console.log("wrtitestuff")}
 
 async function getJson(url) {
     try {
+        setTimeout(writestuff, 200);
+        console.log("In function")
         let response = await fetch(url);
-        
+        //setTimeout(writestuff, 2);
+
+        console.log("right after fetch")
         if (response.ok) {
-            console.log('in then', response);
+            console.log('in then response', response);
             return await response.json();
 
         } else {
@@ -73,6 +86,7 @@ async function getJson(url) {
 
 const myList = getJson(baseUrl + 'type/3');
 myList.then(data => {
+    console.log("in then json")
         console.log(data);
         buildList(data);
     });

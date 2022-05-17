@@ -2,7 +2,7 @@
 private:
 read/write localStorage
 */
-import { qs, writeToLS, readFromLS, bindTouch } from "./utils.js";
+import { writeToLS, readFromLS, bindTouch } from "./utils.js";
 
 // we need a place to store our list of todos in memory
 let liveToDos = null;
@@ -85,9 +85,13 @@ function filterToDos(key, completed = true) {
 
 // public
 export default class ToDos {
+  
   constructor(listElement, key) {
     // opted to store the listElement inside the class.
+    console.log(this.listElement);
     this.listElement = listElement;
+    console.log(this.listElement);
+
     // key for localStorage saving and lookup
     this.key = key;
     // why bind here?

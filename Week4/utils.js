@@ -1,6 +1,6 @@
 // helper function...just a wrapper for document.querySelector
 // example of a named export...
-export function qs(selectorName) {
+function qs(selectorName) {
   return document.querySelector(selectorName);
 }
 
