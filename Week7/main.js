@@ -1,19 +1,27 @@
 
+// function populateStorage() {
+//     localStorage.setItem('bgcolor', 'red');
+//     localStorage.setItem('font', 'Helvetica');
+//     localStorage.setItem('image', 'myCat.png');
+  
+//     localStorage.removeItem('image');
+//   }
+
 // function longProcess() {
 //     setTimeout(() => {
 //         console.log("in anonymous");
 //        return 42
 //      }, 200);
-//     const total = 100; //+ longProcess();
+//     const total = 100; + longProcess();
 //     console.log('total', total); // NaN
 //  }
 
-//   longProcess();
+// longProcess();
  
 // function longProcess() {
 //     return new Promise((resolve, reject) => {
 //         setTimeout(() => {
-//         if (0) {
+//         if (-1) {
 //             resolve(42);
 //         } else reject('failed');
 //             }, 200); 
@@ -30,21 +38,26 @@
 // });
 
   
-// function getJson(url) {
-//     return fetch(url)
-//         .then(response => {
-//             if (response.ok) {
-//                 console.log('in then', response);
-//                 return response.json();
-//             } else {
-//                 throw new Error('not ok');
-//                 console.log('will not run');
-//             }
-//         })
-//         .catch(err => {
-//         console.log(err);
-//         });
-// }
+function getJson(url) {
+    return fetch(url)
+        .then(response => {
+            res = response;
+            if (response.ok) {
+                console.log('in then', response);
+                return response.json();
+            } else {
+                throw new Error('not ok');
+                console.log('will not run');
+            }
+        })
+        .catch(err => {
+        console.log(err);
+        });
+        //
+        //
+        //
+
+}
 
 const baseUrl = 'https://pokeapi.co/api/v2/';
 
@@ -55,10 +68,10 @@ const baseUrl = 'https://pokeapi.co/api/v2/';
 //     });
 
 
-// // myList.then(data => {
-// //   console.log(data);
-// //   buildList(data);
-// // });
+// myList.then(data => {
+//   console.log(data);
+//   buildList(data);
+// });
 
 function writestuff() { console.log("wrtitestuff")}
 
